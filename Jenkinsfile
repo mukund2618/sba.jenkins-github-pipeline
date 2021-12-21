@@ -3,12 +3,13 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        powershell 'pip install -r requirements.txt'
+        powershell "py -m pip install -r requirements.txt"
+	powershell "py web.py"
       }
     }
     stage('test') {
       steps {
-        powershell 'python test.py'
+        powershell "py test.py"
       }
       post {
         always {
